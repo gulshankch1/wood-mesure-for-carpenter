@@ -1,0 +1,17 @@
+﻿document.getElementById('wood-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const diameter = parseFloat(document.getElementById('diameter').value);
+    const height = parseFloat(document.getElementById('height').value);
+
+    if (diameter > 0 && height > 0) {
+        const radius = diameter / 2; // Convert diameter to radius
+        const volume = Math.PI * Math.pow(radius, 2) * (height * 12); // Volume in cubic inches
+        const cubicFeet = volume / 1728; // Convert cubic inches to cubic feet
+        document.getElementById('result').innerHTML = `
+            <h3>Result:</h3>
+            <p>Total wood volume: <strong>${cubicFeet.toFixed(2)}</strong> cubic feet</p>
+        `;
+    } else {
+        alert('Please enter valid dimensions.');
+    }
+});
